@@ -69,5 +69,9 @@ def handle_response():
 
 In this example, the mood "happy" is hard coded. In actual use, this will be dependent on user input.
 
+## UML Diagram
 
-+-------------------------+ HTTP POST +-----------------------------+ | Test Client | ---------------------------------> | Flask Microservice | | (test_microservice.py) | | (get_affirmation endpoint) | +-------------------------+ +-----------------------------+ | - url: str | | - affirmations: dict | | - test_payload: dict | | | | + test_microservice() | | + get_affirmation(): JSON | +-------------------------+ +-----------------------------+ | V +------------------------------+ | Affirmation Logic | +------------------------------+ | - Mood categories: [happy, | | sad, anxious, angry] | | - Random selection per mood | +------------------------------+
+
+![Screenshot 2025-05-20 at 9 08 39 PM](https://github.com/user-attachments/assets/2b1c6ba7-7658-4a39-84f6-316019ceccde)
+
+
