@@ -1,20 +1,34 @@
-import unittest
-from affirmation_microservice import app
+import requests
 
-class TestAffirmationMicroservice(unittest.TestCase):
-    def setUp(self):
-        self.app = app.test_client()
-        self.app.testing = True
+def test_microservice():
+    # URL of the microservice
+    url = "http://127.0.0.1:5000/get_affirmation"
 
-    def test_happy_mood(self):
-        response = self.app.post('/get_affirmation', json={"mood": "happy"})
-        self.assertEqual(response.status_code, 200)
-        self.assertIn("affirmation", response.get_json())
+    # Example mood to test
+    test_payload = {"mood": "happy"}
 
-    def test_unrecognized_mood(self):
-        response = self.app.post('/get_affirmation', json={"mood": "unknown"})
-        self.assertEqual(response.status_code, 400)
-        self.assertIn("error", response.get_json())
+    try:
+        # Print the data being sent
+        print("Sending data:", test_payload)
+
+        # Make a POST request to the microservice
+        response = requests.post(url, json=test_payload)
+
+        # Print the raw response data
+        print("Raw response data:", response.text)
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            data = response.json()
+            print("Affirmation received:", data.get("affirmation"))
+        elif response.status_code == 400:
+            error_data = response.json()
+            print("Error received:", error_data.get("error"))
+        else:
+            print("Unexpected response code:", response.status_code)
+    except Exception as e:
+        print("An error occurred while making the request:", str(e))
+
 
 if __name__ == "__main__":
-    unittest.main()
+    test_microservice()

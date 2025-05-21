@@ -7,6 +7,7 @@ app = Flask(__name__)
 affirmations = {
     "happy": [
         "Glad to hear!",
+        "We're happy that you're happy!"
     ],
     "sad": [
         "Sorry to hear you’re feeling down.",
