@@ -4,6 +4,10 @@ This microservice provides affirmations based on the mood sent in a POST request
 
 ---
 
+## How to Access
+
+The code will be available on this Github repo. To run the code, you must have the latest version of Python installed, and must be able to import the "requests" library. In my examples, I used Pycharm, but any IDE will work. The program that is calling the microservice can be in any language, as long as it can make HTTP requests.
+
 ## How to Programmatically Request Data
 
 To request data from the microservice, send a POST request to the `/get_affirmation` endpoint with a JSON payload containing the `mood` key. The `mood` value should be a string representing the user's mood (e.g., "happy", "sad", "anxious", or "angry"). The microservice will likely be running locally, or if on the web, at a certain url. The example call shows a URL for if you are running the microservice (and your app) locally.
