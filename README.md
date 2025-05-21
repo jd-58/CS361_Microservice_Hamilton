@@ -68,3 +68,6 @@ def handle_response():
 ```
 
 In this example, the mood "happy" is hard coded. In actual use, this will be dependent on user input.
+
+
++-------------------------+ HTTP POST +-----------------------------+ | Test Client | ---------------------------------> | Flask Microservice | | (test_microservice.py) | | (get_affirmation endpoint) | +-------------------------+ +-----------------------------+ | - url: str | | - affirmations: dict | | - test_payload: dict | | | | + test_microservice() | | + get_affirmation(): JSON | +-------------------------+ +-----------------------------+ | V +------------------------------+ | Affirmation Logic | +------------------------------+ | - Mood categories: [happy, | | sad, anxious, angry] | | - Random selection per mood | +------------------------------+
